@@ -20,49 +20,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+// Package provides a primitives for handling S-Record hex files
 package srecord
 
-type RecordType uint8
-
-const (
-	S0 RecordType = iota
-	S1
-	S2
-	S3
-	S4
-	S5
-	S6
-	S7
-	S8
-	S9
-	Header = S0
-	Data16BitAddress = S1
-	Data24BitAddress = S2
-	Data32BitAddress = S3
-	RecordCount16Bit = S5
-	RecordCount24Bit = S6
-	StartAddress32Bit = S7
-	StartAddress24Bit= S8
-	StartAddress16Bit = S9
-)
-
-type HeaderRecord struct {
-	data []byte
-}
-
-func (record *HeaderRecord) Data() []byte {
-	return record.data
-}
-
+// Structure representing a S-Record Data Record
 type DataRecord struct {
 	address uint32
 	data []byte
 }
 
+// Return the byte data contained in the record
 func (record *DataRecord) Data() []byte {
 	return record.data
 }
 
+// Record the address contained in the record
 func (record *DataRecord) Address() uint32 {
 	return record.address
 }
